@@ -10,8 +10,8 @@ const Cart = () => {
 
   const dispatch = useDispatch();
 
-  const Remove = (item) => {
-      dispatch({type: 'REMOVE_CART', payload: item})
+  const Remove = (id) => {
+      dispatch({type: 'REMOVE_CART', payload: id})
   }
 
   const columns = [
@@ -39,12 +39,13 @@ const Cart = () => {
         title: 'Website',
         dataIndex: 'url',
         key: 'url',
+        render:(value,data)=> <a href={data.url} target='_blank' rel='noreferrer'>Biography</a>
     },
     {
       title: "Remove From Favorites",
       dataIndex: "driverId",
       key: "id",
-      render: (value, data) => <Button onClick={() => Remove(data)} type='danger'>Delete Driver</Button>,
+      render: (value, data) => <Button onClick={() => Remove(value)} type='danger'>Delete Driver</Button>,
     
     }
 ];
